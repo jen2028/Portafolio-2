@@ -108,18 +108,20 @@ int Crea_arbol_en_arreglo(Arbol *unArbol,int arreglo[],int posicion){
 	}else{
 		
 		arreglo[posicion]=unArbol->dato;
+
 		posicion++;
-		if(unArbol->hijoizq!=NULL){
-			
-			posicion=Crea_arbol_en_arreglo(unArbol->hijoizq,arreglo,posicion);
-			
-			
-		}
-		
+	
 		if(unArbol->hijoder!=NULL){
 			
 			
 			posicion=Crea_arbol_en_arreglo(unArbol->hijoder,arreglo,posicion);
+			
+		}
+		
+		if(unArbol->hijoizq!=NULL){
+			
+			posicion=Crea_arbol_en_arreglo(unArbol->hijoizq,arreglo,posicion);
+			
 			
 		}
 	
@@ -131,11 +133,41 @@ int Crea_arbol_en_arreglo(Arbol *unArbol,int arreglo[],int posicion){
 
 ////////////////////////////////////
 
-void MostrarArreglo(int arreglo[], int posicion,int tam_max){
+void MostrarArbolArreglo(int arreglo[], int posicion,int tam_max){
+	
+
+	while(posicion<tam_max){
+		
+		if(posicion==0){
+		
+		printf("		%i		\n",arreglo[posicion]);	
+		printf("              |  | \n   ");
+		printf("      -----    ----- \n   ");
+		printf("     |              | \n   ");
+			
+		}
+			
+			int aux;
+			aux=arreglo[posicion+2];
+			printf("     %i              %i\n",aux,arreglo[posicion+1]);
+			printf("       | |            | | \n");
+			
+			aux=arreglo[posicion+3];
+			printf("      %i   %i           N  N",aux);
+			
+			posicion=tam_max;
+			
+	}
+	
+}
+
+/////////////////////////////////////
+
+void MostrarArreglo(int arreglo[],int posicion,int tam_max){
 	
 	for(posicion=0;posicion<tam_max;posicion++){
 		
-		printf("Arreglo[%d] = %d\n",posicion,arreglo[posicion]);
+		printf("\n\n Arreglo[%i]= %i",posicion,arreglo[posicion]);
 		
 	}
 	
